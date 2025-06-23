@@ -13,7 +13,7 @@ Managing a chronic illness like Hashimoto's disease is physically and mentally e
 ---
 
 ## 🏗️ Project Structure
-
+```
 / (root)
 ├── frontend/ # Flutter app (mobile + web)
 ├── backend/ # Python ADK microservices
@@ -22,7 +22,7 @@ Managing a chronic illness like Hashimoto's disease is physically and mentally e
 ├── Dockerfile
 ├── README.md
 └── requirements.txt
-
+```
 
 ---
 

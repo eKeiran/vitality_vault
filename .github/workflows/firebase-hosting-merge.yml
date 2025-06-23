@@ -1,5 +1,3 @@
-# Deploy to Firebase Hosting on merge
-
 name: Deploy to Firebase Hosting on merge
 
 on:
@@ -12,24 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: 'stable'
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.4'  # replace with any stable version you want
 
-    - name: Install dependencies
-      run: flutter pub get
+      - name: Run flutter doctor
+        run: flutter doctor
 
-    - name: Build Flutter Web
-      run: flutter build web
+      - name: Install dependencies
+        run: flutter pub get
 
-    - name: Deploy to Firebase Hosting
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: ${{ secrets.GITHUB_TOKEN }}
-        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_AVID_INFLUENCE_462814_A4 }}
-        channelId: live
-        projectId: avid-influence-462814-a4
+      - name: Build Flutter Web
+        run: flutter build web
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_AVID_INFLUENCE_462814_A4 }}
+          channelId: live
+          projectId: avid-influence-462814-a4
